@@ -2,17 +2,17 @@
 <div class="cart-item">
   <img src="assets/images/hdd_.jpg" alt="hard drive">
   <div class="cart-item-title">Seagate Portable External Hard Drive</div>
-  <div class="cart-item-price">$100</div>
-  <div class="cart-item-discount">DISCOUNT: <span>5%</span></div>
-  <div class="cart-item-final-price">$95</div>
+  <div class="cart-item-price">{{price | currency:'USD'}}</div>
+  <div class="cart-item-discount">{{'discount' | uppercase}}: <span [class.highlight]="(discount > 5)">{{discount | percentage}}</span></div>
+  <div class="cart-item-final-price" [style.backgroundColor]="priceChecker()">{{price - (price*discount/100) | currency:'USD'}}</div>
 </div>
 <div class="control-panel">
   <div class="form-group">
     <label>Price: </label>
-    <input id="txt-price" type="number" placeholder="Price">
+    <input id="txt-price" type="number" placeholder="Price" min="0" [(ngModel)]="price" >
   </div>
   <div class="form-group">
     <label>Discount: </label>
-    <input id="txt-price" type="number" placeholder="Discount">
+    <input id="txt-price" type="number" placeholder="Discount" min="0" [(ngModel)]="discount" >
   </div>
 </div>

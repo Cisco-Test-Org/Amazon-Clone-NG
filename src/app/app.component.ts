@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'amazon-clone';
+  price = 100
+  discount = 5
+
+  priceChecker(): string{
+    const finalPrice = this.price - (this.price* this.discount/100)
+    return finalPrice > 100 ? 'lightgreen' : 'lightblue'
+  }
 }
